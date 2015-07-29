@@ -40,7 +40,6 @@ module Sidekiq::Result::Storage
   private
 
   def encode_object_for_redis(object)
-    puts "About to encode: #{object}"
     begin
       Base64.encode64(Marshal.dump(object))
     rescue
