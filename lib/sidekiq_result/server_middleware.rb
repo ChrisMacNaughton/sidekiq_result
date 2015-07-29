@@ -1,4 +1,7 @@
 module Sidekiq::Result
+  # ServerMiddleware must be included in the server Middlware Chain
+  # for the tracking functionality to work. It is used to wrap the
+  # actual job performance.
   class ServerMiddleware
     include Storage
 
