@@ -17,6 +17,8 @@ module Sidekiq::Result
     end
 
     # The result from the Sidekiq worker
+    # Returns whatever was returned from the Sidekiq job
+    # @param [String] id the id of the Sidekiq job
     def result(id)
       get_object_for_id(id)
     end
