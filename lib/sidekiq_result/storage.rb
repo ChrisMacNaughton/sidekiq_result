@@ -9,6 +9,12 @@ module Sidekiq::Result::Storage
     end
   end
 
+  def check_for_key(id, redis_pool = nil)
+    redis_connection(redis_pool) do |conn|
+      keys = conn.keys(key(id))
+    end
+  end
+
   # Stores the given object in the specific key
   def set_object_for_id(id, object, expiration = nil, redis_pool = nil)
     object = encode_object_for_redis(object)

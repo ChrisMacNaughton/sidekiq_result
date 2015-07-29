@@ -20,6 +20,12 @@ class TestJob < StubJob
   end
 end
 
+class NilJob < StubJob
+  def perform(*args)
+    nil
+  end
+end
+
 class ObjectJob < StubJob
   def perform(*args)
     TestClass.new

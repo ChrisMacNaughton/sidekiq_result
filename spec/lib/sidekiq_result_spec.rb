@@ -42,5 +42,14 @@ describe Sidekiq::Result do
       expect(Sidekiq::Result.complete?(job_id)).to be_truthy
       expect(Sidekiq::Result.result(job_id).name).to eq('World')
     end
+
+    it 'can handle nil as the result' do
+      allow(SecureRandom).to receive(:hex).once.and_return(job_id)
+
+      start_server do
+        expect(NilJob.perform_async).to eq(job_id)
+      end
+      expect(Sidekiq::Result.result(job_id)).to eq(nil)
+    end
   end
 end

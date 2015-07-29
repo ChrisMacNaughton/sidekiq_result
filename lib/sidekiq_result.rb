@@ -10,7 +10,7 @@ module Sidekiq::Result
     # Check if job has registered complete by storing key
     # in it's space
     def complete? id
-      !get_object_for_id(id).nil?
+      !check_for_key(id).empty?
     end
 
     def result(id)
