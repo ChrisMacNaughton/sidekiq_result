@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.0
   - 2.1
+  - 2.1.2
+  - 2.1.5
   - 2.2
   - rbx-2
 before_install: gem install bundler -v 1.10.5
@@ -11,3 +13,7 @@ services: redis
 matrix:
   allow_failures:
     - rvm: rbx-2
+notifications:
+  email:
+    on_success: never
+    on_failure: change
